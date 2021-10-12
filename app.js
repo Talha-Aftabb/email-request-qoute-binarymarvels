@@ -14,4 +14,4 @@ app.get("/", (req, res) => {
   res.send("We Are On Home");
 });
 
-app.listen(3000);
+app.listen(process.env.port||3000);
