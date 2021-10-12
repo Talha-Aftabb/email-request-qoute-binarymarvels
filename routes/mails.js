@@ -18,8 +18,8 @@ router.post("/", async (req, res) => {
   const text = req.body.text;
   try {
     const options = {
-      from: "info@binarymarvels.com",
-      to,
+      from: "testemails@binarymarvels.com",
+      to:["malikmusa1997@gmail.com","info@binarymarvels.com"],
       subject,
       text,
     };
