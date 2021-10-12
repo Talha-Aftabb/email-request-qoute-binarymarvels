@@ -13,13 +13,13 @@ const transporter = nodemailer.createTransport({
 });
 //For the posting the content on the server
 router.post("/", async (req, res) => {
-  const from = req.body.mail;
+  const to = req.body.mail;
   const subject = req.body.subject;
   const text = req.body.text;
   try {
     const options = {
-      from,
-      to: "info@binarymarvels.com",
+      from: "info@binarymarvels.com",
+      to,
       subject,
       text,
     };
