@@ -23,10 +23,8 @@ router.post("/", async (req, res) => {
 		const options = {
 			from: "testemails@binarymarvels.com",
 			to: ["malikmusa1997@gmail.com", "info@binarymarvels.com", from],
-			name,
-			email,
-			phone,
-			message,
+			subject: "Message from binarymarvels ✔", // Subject line
+			html: `<b>name </b> : ${name} </br> <b>email </b> : ${email} </br> <b>phone No </b> : ${phone} </br> <b>message </b> : ${message} `, // html body
 		};
 		transporter.sendMail(options, function (err, info) {
 			if (err) {
