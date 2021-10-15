@@ -16,7 +16,6 @@ const transporter = nodemailer.createTransport({
 router.post(
 	"/",
 	[
-		check("mail").notEmpty().withMessage("Mail cannot be empty"),
 		check("name").notEmpty().withMessage("Name cannot be empty"),
 		check("email").notEmpty().withMessage("Email cannot be empty"),
 		check("phone")
