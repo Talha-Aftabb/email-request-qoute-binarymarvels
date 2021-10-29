@@ -46,26 +46,26 @@ router.post(
 					},
 				],
 			};
-			const userOptions = {
-				from: "testemails@binarymarvels.com",
-				to: [from],
-				subject: "Message from binarymarvels ✔", // Subject line
-				html: `<p>Hello ${name}, hope you are doing great.
+			// const userOptions = {
+			// 	from: "testemails@binarymarvels.com",
+			// 	to: [from],
+			// 	subject: "Message from binarymarvels ✔", // Subject line
+			// 	html: `<p>Hello ${name}, hope you are doing great.
 
-				Thanks for requesting a free consultation, we have received your request and one of our representator will contact you soon.
-				
-				In the meantime you can know more about us by downloading the PDF below
-				
-				Regards;
-				Binary Marvels Team
-				</p>`, // html body
-				attachments: [
-					{
-						filename: "attachment.pdf",
-						path: "./attachment.pdf",
-					},
-				],
-			};
+			// 	Thanks for requesting a free consultation, we have received your request and one of our representator will contact you soon.
+
+			// 	In the meantime you can know more about us by downloading the PDF below
+
+			// 	Regards;
+			// 	Binary Marvels Team
+			// 	</p>`, // html body
+			// 	attachments: [
+			// 		{
+			// 			filename: "attachment.pdf",
+			// 			path: "./attachment.pdf",
+			// 		},
+			// 	],
+			// };
 			transporter.sendMail(mailOptions, function (err, info) {
 				if (err) {
 					console.log(err);
@@ -73,16 +73,19 @@ router.post(
 						message: err,
 					});
 				}
-				transporter.sendMail(userOptions, function (err, info) {
-					if (err) {
-						console.log(err);
-						return res.status(500).json({
-							message: err,
-						});
-					}
-					res.status(200).json({
-						message: info.response,
-					});
+				// transporter.sendMail(userOptions, function (err, info) {
+				// 	if (err) {
+				// 		console.log(err);
+				// 		return res.status(500).json({
+				// 			message: err,
+				// 		});
+				// 	}
+				// 	res.status(200).json({
+				// 		message: info.response,
+				// 	});
+				// });
+				res.status(200).json({
+					message: info.response,
 				});
 			});
 		} catch (err) {
