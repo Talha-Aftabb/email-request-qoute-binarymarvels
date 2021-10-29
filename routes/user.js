@@ -15,10 +15,7 @@ const transporter = nodemailer.createTransport({
 //For the posting the content on the server
 router.post(
 	"/",
-	[
-		check("name").notEmpty().withMessage("Name cannot be empty"),
-		check("email").notEmpty().withMessage("Email cannot be empty"),
-	],
+	[check("email").notEmpty().withMessage("Email cannot be empty")],
 	async (req, res) => {
 		const errors = validationResult(req);
 		console.log(errors);
@@ -26,7 +23,7 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { from, name } = req.body;
+		const { from } = req.body;
 
 		try {
 			const userOptions = {
