@@ -33,7 +33,7 @@ router.post(
 				from: "testemails@binarymarvels.com",
 				to: [from],
 				subject: "Message from binarymarvels ✔", // Subject line
-				html: `<p>Hello ${name}, hope you are doing great.
+				html: `<p>Hello, hope you are doing great.
 				Thanks for requesting a free consultation, we have received your request and one of our representator will contact you soon.
 				In the meantime you can know more about us by downloading the PDF below
 				Regards;
