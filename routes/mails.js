@@ -38,13 +38,42 @@ router.post(
 		const message = req.body.message;
 
 		try {
-			const options = {
+			const mailOptions = {
 				from: "testemails@binarymarvels.com",
-				to: ["malikmusa1997@gmail.com", "info@binarymarvels.com", from],
+				to: ["malikmusa1997@gmail.com", "info@binarymarvels.com"],
 				subject: "Message from binarymarvels ✔", // Subject line
-				html: `<b>name </b> : ${name} </br> <b>email </b> : ${email} </br> <b>phone No </b> : ${phone} </br> <b>message </b> : ${message} `, // html body
+				html: `<h1>Client Email Information<br> </h1><b>Name </b> : ${name} <br> <b>Email </b> : ${email} <br> <b>Phone No </b> : ${phone} <br> <b>Message </b> : ${message} <br><br> <h1>Attachments</h1>`, // html body
+				attachments: [
+					{
+						filename: "attachment.pdf",
+						path: "./attachment.pdf",
+					},
+				],
 			};
-			transporter.sendMail(options, function (err, info) {
+			const userOptions = {
+				from: "testemails@binarymarvels.com",
+				to: [from],
+				subject: "Message from binarymarvels ✔", // Subject line
+				html: `<p></p>`, // html body
+				attachments: [
+					{
+						filename: "attachment.pdf",
+						path: "./attachment.pdf",
+					},
+				],
+			};
+			transporter.sendMail(mailOptions, function (err, info) {
+				if (err) {
+					console.log(err);
+					return res.status(500).json({
+						message: err,
+					});
+				}
+				res.status(200).json({
+					message: info.response,
+				});
+			});
+			transporter.sendMail(userOptions, function (err, info) {
 				if (err) {
 					console.log(err);
 					return res.status(500).json({
