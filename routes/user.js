@@ -26,12 +26,12 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { from, name } = req.body;
+		const { email, name } = req.body;
 
 		try {
 			const userOptions = {
 				from: "testemails@binarymarvels.com",
-				to: [from],
+				to: [email],
 				subject: "Message from binarymarvels ✔", // Subject line
 				html: `<p>Hello ${name}, hope you are doing great.
 				Thanks for requesting a free consultation, we have received your request and one of our representator will contact you soon.

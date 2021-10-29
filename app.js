@@ -10,7 +10,7 @@ app.use(cors()); // Use this after the variable declaration
 app.use(bodyParser.json());
 //Importing routes
 app.use("/mail", mailsRoute);
-app.use("/user", userRoute);
+app.use("/user-mail", userRoute);
 //on page routing
 app.get("/", (_req, res) => {
 	res.send("We Are On Home");
