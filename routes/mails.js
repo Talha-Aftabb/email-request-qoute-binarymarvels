@@ -18,11 +18,7 @@ router.post(
 	[
 		check("name").notEmpty().withMessage("Name cannot be empty"),
 		check("email").notEmpty().withMessage("Email cannot be empty"),
-		check("phone")
-			.notEmpty()
-			.withMessage("Phone Number cannot be empty")
-			.isLength({ min: 11 })
-			.withMessage("phone number must be atleast 11 characters"),
+		check("phone").notEmpty().withMessage("Phone Number cannot be empty"),
 		check("message").notEmpty().withMessage("Message cannot be empty"),
 	],
 	async (req, res) => {
@@ -77,19 +73,16 @@ router.post(
 						message: err,
 					});
 				}
-				res.status(200).json({
-					message: info.response,
-				});
-			});
-			transporter.sendMail(userOptions, function (err, info) {
-				if (err) {
-					console.log(err);
-					return res.status(500).json({
-						message: err,
+				transporter.sendMail(userOptions, function (err, info) {
+					if (err) {
+						console.log(err);
+						return res.status(500).json({
+							message: err,
+						});
+					}
+					res.status(200).json({
+						message: info.response,
 					});
-				}
-				res.status(200).json({
-					message: info.response,
 				});
 			});
 		} catch (err) {

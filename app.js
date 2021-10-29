@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 //Importing routes
 app.use("/mail", mailsRoute);
 //on page routing
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
 	res.send("We Are On Home");
 });
 
