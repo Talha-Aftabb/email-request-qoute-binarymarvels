@@ -38,12 +38,6 @@ router.post(
 				to: ["malikmusa1997@gmail.com", "info@binarymarvels.com"],
 				subject: "Message from binarymarvels ✔", // Subject line
 				html: `<h1>Client Email Information<br> </h1><b>Name </b> : ${name} <br> <b>Email </b> : ${email} <br> <b>Phone No </b> : ${phone} <br> <b>Message </b> : ${message} <br><br> <h1>Attachments</h1>`, // html body
-				attachments: [
-					{
-						filename: "attachment.pdf",
-						path: "./attachment.pdf",
-					},
-				],
 			};
 			transporter.sendMail(mailOptions, function (err, info) {
 				if (err) {
