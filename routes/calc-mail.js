@@ -26,6 +26,7 @@ router.post(
 	// 	check("phone").notEmpty().withMessage("phone Number cannot be empty"),
 	// ],
 	async (req, res) => {
+		console.log(req.body);
 		const errors = validationResult(req);
 		console.log(errors);
 		if (!errors.isEmpty()) {
